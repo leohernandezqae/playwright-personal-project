@@ -8,6 +8,7 @@ jobs:
   test:
     timeout-minutes: 5
     runs-on: windows-latest
+    environment: local
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v5
