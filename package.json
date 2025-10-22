@@ -4,7 +4,7 @@
   "scripts": {
     "start": "node index.js",
     "test": "npx playwright test",
-    "report": "npx playwright show-report tests/test-report"
+    "report": "npx playwright show-report tests/artifacts/test-report"
   },
   "dependencies": {
     "bcrypt": "^6.0.0",

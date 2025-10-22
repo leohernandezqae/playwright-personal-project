@@ -6,8 +6,8 @@ node_modules/
 .env
 
 # Playwright
-tests/test-results/
-tests/test-report/
-tests/blob-report/
+tests/artifacts/test-results/
+tests/artifacts/test-report/
+tests/artifacts/blob-report/
 tests/playwright/.cache/
 tests/playwright/.auth/
