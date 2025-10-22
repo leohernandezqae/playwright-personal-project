@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Login</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-color: #f8f9fa;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .login-card {
+        background: #fff;
+        padding: 2rem;
+        border-radius: 0.5rem;
+        width: 100%;
+        max-width: 400px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-check-label {
+        user-select: none;
+      }
+
+      .requirements {
+        font-size: 0.85rem;
+        margin-bottom: 1rem;
+      }
+
+      .requirements span {
+        display: block;
+        color: #dc3545; /* red initially */
+      }
+
+      .requirements span.valid {
+        color: #28a745; /* green when satisfied */
+      }
+
+      .position-relative .form-control {
+        padding-right: 2.5rem;
+      }
+
+      #togglePassword {
+        border: none;
+        background: transparent;
+        position: absolute;
+        top: 68%;
+        right: -1.7rem;
+        transform: translateY(-50%);
+        cursor: pointer;
+        color: #6c757d;
+        padding: 0.25rem;
+      }
+
+      #togglePassword:hover {
+        color: #000;
+      }
+
+      @media (max-width: 576px) {
+        .login-card {
+          padding: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body data-testid="body">
+    <div class="login-card" data-testid="login-card">
+      <h2 class="text-center mb-4" data-testid="login-title">🔐 Login</h2>
+
+      <form id="loginForm" data-testid="login-form">
+        <div class="mb-3" data-testid="login-field-wrapper">
+          <label for="loginInput" class="form-label" data-testid="login-label">Login</label>
+          <input
+            type="text"
+            id="loginInput"
+            class="form-control"
+            placeholder="Digite seu login"
+            required
+            data-testid="login-input"
+          />
+        </div>
+
+        <div class="mb-3 position-relative" data-testid="password-field-wrapper">
+          <label for="passwordInput" class="form-label" data-testid="password-label">Password</label>
+          <input
+            type="password"
+            id="passwordInput"
+            class="form-control"
+            placeholder="Digite sua senha"
+            required
+            data-testid="password-input"
+          />
+          <button
+            type="button"
+            id="togglePassword"
+            aria-label="Mostrar senha"
+            data-testid="toggle-password-btn"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              fill="currentColor"
+              class="bi bi-eye"
+              viewBox="0 0 16 16"
+              data-testid="toggle-password-icon"
+            >
+              <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8z" />
+              <path d="M8 5a3 3 0 100 6 3 3 0 000-6z" />
+            </svg>
+          </button>
+        </div>
+
+        <div class="mb-3 form-check" data-testid="save-password-wrapper">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="savePassword"
+            data-testid="save-password-checkbox"
+          />
+          <label
+            class="form-check-label"
+            for="savePassword"
+            data-testid="save-password-label"
+            >Save Password</label
+          >
+        </div>
+
+        <div class="mb-3 requirements" data-testid="requirements">
+          <span id="reqLength" data-testid="req-length">8-25 characters</span>
+          <span id="reqUpper" data-testid="req-upper">At least one uppercase letter</span>
+          <span id="reqNumber" data-testid="req-number">At least one number</span>
+          <span id="reqSpecial" data-testid="req-special">At least one special character</span>
+        </div>
+
+        <button
+          type="submit"
+          class="btn btn-primary w-100"
+          data-testid="submit-btn"
+        >
+          Login
+        </button>
+      </form>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+      const passwordInput = document.getElementById("passwordInput");
+      const togglePassword = document.getElementById("togglePassword");
+
+      togglePassword.addEventListener("click", () => {
+        const type = passwordInput.type === "password" ? "text" : "password";
+        passwordInput.type = type;
+        togglePassword.innerHTML =
+          type === "password"
+            ? `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16" data-testid="toggle-password-icon">
+         <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8z"/>
+         <path d="M8 5a3 3 0 100 6 3 3 0 000-6z"/>
+       </svg>`
+            : `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-eye-slash" viewBox="0 0 16 16" data-testid="toggle-password-icon">
+         <path d="M13.359 11.238A8.947 8.947 0 0016 8s-3-5.5-8-5.5c-1.647 0-3.175.528-4.438 1.406l.71.71A7.959 7.959 0 018 3.5C12 3.5 14.623 7 14.623 7c-.06.062-.12.125-.182.187l-.936.936z"/>
+         <path d="M3.404 2.646L2.646 3.404 14.596 15.354l.758-.758-11.95-11.95z"/>
+         <path d="M8 5a3 3 0 00-2.83 3.98l2.83 2.83A3 3 0 008 5z"/>
+       </svg>`;
+      });
+
+      // Password validation
+      const reqLength = document.getElementById("reqLength");
+      const reqUpper = document.getElementById("reqUpper");
+      const reqNumber = document.getElementById("reqNumber");
+      const reqSpecial = document.getElementById("reqSpecial");
+
+      passwordInput.addEventListener("input", () => {
+        const val = passwordInput.value;
+        reqLength.classList.toggle(
+          "valid",
+          val.length >= 8 && val.length <= 25
+        );
+        reqUpper.classList.toggle("valid", /[A-Z]/.test(val));
+        reqNumber.classList.toggle("valid", /[0-9]/.test(val));
+        reqSpecial.classList.toggle(
+          "valid",
+          /[!@#$%^&*(),.?":{}|<>]/.test(val)
+        );
+      });
+
+      // Submit
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const login = document.getElementById("loginInput").value;
+          const password = passwordInput.value;
+
+          const res = await fetch("/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ login, password }),
+          });
+          const data = await res.json();
+
+          if (res.ok) {
+            localStorage.setItem("token", data.token);
+            window.location.href = "/users.html";
+          } else {
+            alert(data.message);
+          }
+        });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,127 @@
+th {
+  cursor: pointer;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.custom-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px; /* fixed navbar height */
+  padding: 0 1rem;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #dee2e6;
+  font-family: Arial, sans-serif;
+  border-radius: 5px;
+}
+
+/* Make navbar items full height */
+.navbar {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.navbar-nav {
+  height: 50px; /* set your navbar height */
+}
+
+.navbar-nav .nav-item {
+  height: 100%; /* make each li full height */
+}
+
+.navbar-nav .nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;       /* fill li height */
+  padding: 0 1.5rem;  /* horizontal spacing */
+  margin: 0;
+  border-radius: 0;
+  transition: background-color 0.2s, color 0.2s;
+  color: #212529;
+}
+
+.navbar-nav .nav-link:hover {
+  background-color: #0d6efd;
+  color: #fff;
+  text-decoration: none;
+  height: 100%;       /* ensure full height on hover */
+}
+
+.menu-left, .menu-right {
+  display: flex;
+  align-items: stretch; /* make children stretch to full height */
+  height: 100%;
+}
+
+.menu-left a {
+  color: #212529;
+  text-decoration: none;
+  font-weight: bold;
+  display: flex;        /* make link a flex container */
+  align-items: center;  /* center text vertically */
+  padding: 0 0.5rem;    /* horizontal padding only */
+  height: 100%;         /* fill parent height */
+  transition: background-color 0.2s;
+}
+
+.menu-left a:hover {
+  background-color: #e2e6ea;
+  border-radius: 3px;
+}
+
+.menu-right button {
+  border: none;
+  font-weight: bold;
+  padding: 0 1rem;
+  height: 100%;       /* fill navbar height */
+  border-radius: 0;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-right: 0.5rem;
+}
+
+#logoutBtn {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+#logoutBtn:hover {
+  background-color: #c82333;
+}
+
+.menu-right button:not(#logoutBtn) {
+  background-color: #0d6efd;
+  color: #fff;
+}
+
+.menu-right button:not(#logoutBtn):hover {
+  background-color: #0b5ed7;
+}
+
+#sessionTimer {
+  font-size: 0.9rem;
+  color: #a4adb6;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+/* _css/styles.css */
+form input, form button {
+  min-height: 45px;
+}
+
+@media (max-width: 576px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+  table {
+    font-size: 0.85rem;
+  }
+}
