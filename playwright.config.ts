@@ -59,7 +59,6 @@ export default defineConfig({
     stdout: "ignore",
     stderr: "pipe",
   },
-
   use: {
     baseURL: process.env.BASE_URL,
     trace: "on-first-retry",
