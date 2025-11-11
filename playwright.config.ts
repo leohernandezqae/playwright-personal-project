@@ -42,9 +42,7 @@ export default defineConfig({
     url: process.env.BASE_URL || "http://localhost:3000",
     reuseExistingServer: !process.env.CI,
     name: "Launch project",
-    timeout: 30 * 1000,
-    stdout: "ignore",
-    stderr: "pipe",
+    timeout: 120 * 1000,
   },
   use: {
     baseURL: process.env.BASE_URL,
