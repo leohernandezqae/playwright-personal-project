@@ -28,8 +28,10 @@ jobs:
         run: npx playwright install --with-deps chromium
 
       - name: Run Playwright tests
-        env: local
-
+        env:
+          BASE_URL: ${{ vars.BASE_URL }}
+          USER_LOGIN: ${{ vars.USER_LOGIN }}
+          USER_PASSWORD: ${{ vars.USER_PASSWORD }}
         run: npx playwright test
 
       - name: Upload Playwright report
