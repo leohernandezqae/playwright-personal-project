@@ -26,10 +26,10 @@ export default defineConfig({
     {
       name: "e2e",
       testDir: "./tests/e2e",
+      dependencies: ["setup"],
       use: {
         ...devices["Desktop Chrome"],
       },
-      dependencies: ["setup"],
     },
     {
       name: "api",
