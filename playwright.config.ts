@@ -14,11 +14,6 @@ export default defineConfig({
     ["list"],
     ["html", { outputFolder: "./tests/artifacts/test-report" }],
   ],
-  use: {
-    baseURL: process.env.BASE_URL,
-    trace: "on-first-retry",
-    screenshot: "on",
-  },
   projects: [
     {
       name: "setup",
@@ -50,5 +45,10 @@ export default defineConfig({
     timeout: 30 * 1000,
     stdout: "ignore",
     stderr: "pipe",
+  },
+  use: {
+    baseURL: process.env.BASE_URL,
+    trace: "on-first-retry",
+    screenshot: "on",
   },
 });
