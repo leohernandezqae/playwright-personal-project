@@ -4,7 +4,7 @@
   "scripts": {
     "start": "node index.js",
     "test": "npx playwright test",
-    "report": "npx playwright show-report tests/test-report"
+    "report": "npx playwright show-report tests/artifacts/test-report"
   },
   "dependencies": {
     "bcrypt": "^6.0.0",
@@ -14,11 +14,13 @@
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
     "sequelize": "^6.37.7",
-    "sqlite3": "^5.1.7"
+    "sqlite3": "^5.1.7",
+    "wait-on": "^9.0.1"
   },
   "devDependencies": {
     "@playwright/test": "^1.56.1",
     "@types/node": "^24.3.0",
-    "sequelize-cli": "^6.6.3"
+    "sequelize-cli": "^6.6.3",
+    "typescript": "^5.9.3"
   }
 }
