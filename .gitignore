@@ -10,7 +10,7 @@ tests/artifacts/test-results/
 tests/artifacts/test-report/
 tests/artifacts/blob-report/
 tests/playwright/.cache/
-tests/playwright/.auth/
+tests/playwright/.auth/*
 tips.ts
 
 tools/

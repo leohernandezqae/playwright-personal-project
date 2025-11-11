@@ -2,7 +2,7 @@ import { test as setup, request } from '@playwright/test';
 import fs from 'fs';
 import path from 'path';
 
-const authFile = path.join(__dirname, '/playwright/.auth/user.json');
+const authFile = path.join(__dirname, './playwright/.auth/user.json');
 
 setup('authenticate', async () => {
   // Create an API request context
