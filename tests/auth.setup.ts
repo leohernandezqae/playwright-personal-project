@@ -2,7 +2,8 @@ import { test as setup, request } from '@playwright/test';
 import fs from 'fs';
 import path from 'path';
 
-const authFile = path.join(__dirname, '/playwright/.auth/user.json');
+const authDir = path.join(__dirname, 'playwright/.auth/');
+const authFileName = 'user.json'
 
 setup('authenticate', async () => {
   // Create an API request context
@@ -35,8 +36,11 @@ setup('authenticate', async () => {
     ],
   };
 
-  // Save storageState to file
-  fs.writeFileSync(authFile, JSON.stringify(storageState, null, 2));
+  // Create auth dir
+  fs.mkdirSync(authDir, { recursive: true });
 
-  console.log('✅ API login successful. Storage state saved to', authFile);
+  // Save storageState to file
+  fs.writeFileSync(path.join(authDir, authFileName), JSON.stringify(storageState, null, 2));
+
+  //console.log('✅ API login successful. Storage state saved to', path.join(authDir, authFileName));
 });

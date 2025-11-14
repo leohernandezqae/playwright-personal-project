@@ -30,6 +30,8 @@ jobs:
       - name: Run Playwright tests
         env:
           BASE_URL: ${{ vars.BASE_URL }}
+          USER_LOGIN: ${{ vars.USER_LOGIN }}
+          USER_PASSWORD: ${{ vars.USER_PASSWORD }}
         run: npx playwright test
 
       - name: Upload Playwright report

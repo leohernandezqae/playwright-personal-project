@@ -14,11 +14,6 @@ export default defineConfig({
     ["list"],
     ["html", { outputFolder: "./tests/artifacts/test-report" }],
   ],
-  use: {
-    baseURL: process.env.BASE_URL,
-    trace: "on-first-retry",
-    screenshot: "on",
-  },
   projects: [
     {
       name: "setup",
@@ -31,10 +26,10 @@ export default defineConfig({
     {
       name: "e2e",
       testDir: "./tests/e2e",
+      dependencies: ["setup"],
       use: {
         ...devices["Desktop Chrome"],
       },
-      dependencies: ["setup"],
     },
     {
       name: "api",
@@ -45,10 +40,13 @@ export default defineConfig({
   webServer: {
     command: "npm run start",
     url: process.env.BASE_URL || "http://localhost:3000",
-    reuseExistingServer: !process.env.CI,
+    reuseExistingServer: true,
     name: "Launch project",
-    timeout: 30 * 1000,
-    stdout: "ignore",
-    stderr: "pipe",
+    timeout: 120 * 1000,
+  },
+  use: {
+    baseURL: process.env.BASE_URL,
+    trace: "on-first-retry",
+    screenshot: "on",
   },
 });
