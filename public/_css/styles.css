@@ -113,7 +113,7 @@ input::-webkit-inner-spin-button {
 }
 
 /* _css/styles.css */
-form input, form button {
+form input, form button, select {
   min-height: 45px;
 }
 

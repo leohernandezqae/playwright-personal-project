@@ -43,6 +43,7 @@ export function renderTable(users, editUser, deleteUser) {
       <td>${user.firstName} ${user.lastName}</td>
       <td>${formatDate(user.birthDate)}</td>
       <td>${user.occupation}</td>
+      <td>${user.employmentType}</td>
       <td>${formatMoney(user.salary)}</td>
       <td>
         <button class="btn btn-sm btn-warning me-2">Edit</button>

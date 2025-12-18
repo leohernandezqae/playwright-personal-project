@@ -19,6 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     lastName: DataTypes.STRING,
     birthDate: DataTypes.DATE,
     occupation: DataTypes.STRING,
+    employmentType: DataTypes.ENUM('CLT', 'PJ', 'Intern', 'Contractor'),
     salary: DataTypes.DECIMAL
   }, {
     sequelize,
