@@ -2,16 +2,19 @@ const User = require("../models").User;
 
 exports.createUser = async (req, res) => {
   try {
-    const { cpf } = req.body;
+    const { cpf, employmentType } = req.body;
 
     // Validate CPF
     if (!isValidCPF(cpf)) {
       return res.status(400).json({ message: "Invalid CPF" });
     }
 
+    if (!employmentType) {
+      return res.status(400).json({ message: "An employment type should be selected!" });
+    }
+
     // Check if document already exists
-    const isCpfFound = await User.findOne({ Where: { cpf: `${cpf}` } });
-    console.log(isCpfFound);
+    const isCpfFound = await User.findOne({ where: { cpf: `${cpf}` } });
     if (isCpfFound) {
       return res
         .status(404)
@@ -39,9 +42,13 @@ exports.getUserById = async (req, res) => {
 exports.updateUser = async (req, res) => {
   try {
     const user = await User.findByPk(req.params.id);
-    console.log(user);
+
     if (!user) {
       return res.status(404).json({ message: "User not founds" });
+    }
+
+    if (!req.body.employmentType) {
+      return res.status(400).json({ message: "An employment type should be selected!" });
     }
 
     await user.update(req.body);

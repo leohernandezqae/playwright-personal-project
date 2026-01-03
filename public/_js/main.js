@@ -24,6 +24,7 @@ userForm.addEventListener("submit", async (e) => {
     lastName: document.getElementById("lastName").value,
     birthDate: document.getElementById("birthDate").value,
     occupation: document.getElementById("occupation").value,
+    employmentType: document.getElementById("employmentType").value,
     salary: parseFloat(document.getElementById("salary").value.replace(/\D/g, "")) / 100
   };
 
@@ -43,6 +44,7 @@ export async function openEditModal(id) {
   document.getElementById("editLastName").value = user.lastName;
   document.getElementById("editBirthDate").value = user.birthDate.split("T")[0];
   document.getElementById("editOccupation").value = user.occupation;
+  document.getElementById("editEmploymentType").value = user.employmentType,
   document.getElementById("editSalary").value = user.salary.toFixed(2);
   editModal.show();
 }
@@ -50,11 +52,19 @@ export async function openEditModal(id) {
 // -------------------- Save Edit --------------------
 document.getElementById("saveEdit").addEventListener("click", async () => {
   const id = document.getElementById("editId").value;
+  const form = document.getElementById('editUserForm');
+  
+  if (!form.checkValidity()) {
+    form.reportValidity(); // shows browser validation messages
+  return;
+  }
+
   const updatedUser = {
     firstName: document.getElementById("editFirstName").value,
     lastName: document.getElementById("editLastName").value,
     birthDate: document.getElementById("editBirthDate").value,
     occupation: document.getElementById("editOccupation").value,
+    employmentType: document.getElementById("editEmploymentType").value,
     salary: parseFloat(document.getElementById("editSalary").value.replace(/\D/g, "")) / 100
   };
 

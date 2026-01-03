@@ -19,9 +19,6 @@ export default defineConfig({
       name: "setup",
       testDir: "./tests",
       testMatch: "**/*.setup.ts",
-      use: {
-        baseURL: process.env.BASE_URL || "http://localhost:3000",
-      },
     },
     {
       name: "e2e",
